@@ -41,7 +41,7 @@ Here’s a step-by-step breakdown of what we do in this project:
 
 We start by creating a SQL table with appropriate data types:
 
-```sql
+sql
 CREATE TABLE zepto (
   sku_id SERIAL PRIMARY KEY,
   category VARCHAR(120),
@@ -89,38 +89,48 @@ Converted mrp and discountedSellingPrice from paise to rupees for consistency an
 All charts are generated from SQL outputs using Python/Matplotlib and stored in the charts/ folder.
 
 1️⃣ Top 10 Best-Value Products (Highest Discount %)
+
 SQL: Top 10 SKUs ordered by discountPercent (descending) to identify best-value deals for customers.
 
-
+<p align="center"> <img src="charts/q1_top_10_discounts.png" alt="Top 10 Best-Value Products" width="75%"> </p>
 2️⃣ High-MRP Products That Are Out of Stock
+
 SQL: Filtered products where outOfStock = TRUE and mrp > 300 to highlight high-value stockouts.
 
-
+<p align="center"> <img src="charts/q2_high_mrp_oos.png" alt="High MRP Out-of-Stock Products" width="75%"> </p>
 3️⃣ Estimated Revenue per Category
+
 SQL: SUM(discountedSellingPrice * availableQuantity) grouped by category to estimate potential revenue.
 
-
+<p align="center"> <img src="charts/q3_revenue_per_category.png" alt="Estimated Revenue per Category" width="75%"> </p>
 4️⃣ Expensive Products with Low Discounts
+
 SQL: Filter where mrp > 500 and discountPercent < 10 to find premium products that are not heavily discounted.
 
-
+<p align="center"> <img src="charts/q4_high_mrp_low_discount.png" alt="High MRP, Low Discount Products" width="75%"> </p>
 5️⃣ Top 5 Categories by Average Discount
+
 SQL: AVG(discountPercent) grouped by category and sorted to identify most discounted categories.
 
-
+<p align="center"> <img src="charts/q5_top5_avg_discount.png" alt="Top 5 Categories by Avg Discount" width="75%"> </p>
 6️⃣ Price per Gram – Value-for-Money Analysis
+
 SQL: Compute discountedSellingPrice / weightInGms for products with weightInGms >= 100 to compare value across SKUs.
 
-
+<p align="center"> <img src="charts/q6_price_per_gram.png" alt="Price Per Gram (100g+ Products)" width="75%"> </p>
 7️⃣ Product Weight Segmentation (Low / Medium / Bulk)
+
 SQL: Categorized products using a CASE expression on weightInGms into Low, Medium, and Bulk.
 
-
+<p align="center"> <img src="charts/q7_weight_category_distribution.png" alt="Weight Category Distribution" width="55%"> </p>
 8️⃣ Total Inventory Weight per Category
+
 SQL: SUM(weightInGms * availableQuantity) grouped by category to understand physical inventory load.
 
+<p align="center"> <img src="charts/q8_total_weight_per_category.png" alt="Total Inventory Weight per Category" width="75%"> </p>
 
 💡 Thanks for checking out the project!
+
 
 
 
